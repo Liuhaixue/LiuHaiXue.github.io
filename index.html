@@ -1,7 +1,89 @@
+
 <!DOCTYPE html>
 <html>
+<head>
+	<title>Roster</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+		body {
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			
+		}
+		h1, h2{
+			text-align: center;
+			color: #08C;
+		}
+		.thd {
+			background-color: #08C;
+			text-align: center;
+			color: white;
+		}
+		.table {
+			border-bottom: 1px solid #DDD;
+		}
+		.table th, .table td {
+			padding: 3px 8px;
+			line-height: 20px;
+			border-top: 1px solid #DDD;
+			border-left: 1px solid #DDD;
+			display: table-cell;
+			border-collapse: separate;
+			border-spacing: 0;
+			font-size: 14px;
+		}
+		
+		.self-intro {
+			vertical-align: middle;
+		}
+		.portrait {
+			
+			max-width: 150px;
+			max-height: 192px;
+			text-align: center;
+		}
+		td{
+			height: 25px;
+		}
+	</style>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">	
+		$.getJSON("roster-2023.json", function(data){
+		   for (p in data) {
+                       con='<tr class="thd">'+
+					'		<td>Photo</td>'+
+					'		<td  width = "15%" colspan="2" >Personal Information</td>'+
+					'		<td>Self-Introduction</td>'+
+					'	</tr>'+
+					'	<tr>'+
+					'		<td rowspan="6" style="text-align:center">'+
+					'			<img class="portrait" src="images_roster_2023/'+data[p]._id + ' " />'+
+					'		</td>'+
+					'		<td>Name</td>'+
+					'		<td>'+data[p].name_ch+'</td>'+
+					'		<td rowspan="4" class="self-intro">'+
+					'		'+data[p].intro+
+					'		</td>'+
+					'	</tr>'+
+					'	<tr><td>&nbsp;</td><td class="">'+data[p].name_en+'</td></tr>'+
+					'	<tr><td>Nick</td><td class="">'+data[p].nick+'</td></tr>'+
+					'	<tr><td>From</td><td class="">'+data[p].from+'</td></tr>'+
+					'	<tr><td>Major</td><td class="">'+data[p].major+'</td><td><b>Hobby:</b> '+data[p].hobby+' </td></tr>'+
+					'	<tr><td>Grade</td><td class="">'+data[p].grade+'</td><td><b>Webpage:</b> <a href="'+data[p].webpage+'">'+data[p].webpage+'</a></td></tr>';
+				$('.table tbody').append(con);
+		   }
+		});			
+	</script>
+	
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+	<h1>Roster for  Introduction to Computer Science</h1>
+	<h2>Guangzhou College of Technology and Business, Autumn 2023</h2>
+	<table class="table">
+		<tbody>
+		</tbody>
+	</table>
+<p style="color: #aaa; font-size: 12px; float: right; padding: 20px 3px;">
+Designer: Haixue Liu
+</p>
 </body>
 </html>
